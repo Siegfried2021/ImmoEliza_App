@@ -24,7 +24,7 @@ st.markdown(
         section[data-testid="stSidebar"] * {
             font-size: 1.15rem;  
         }
-        div.st-emotion-cache-1uzzq9q:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h2:nth-child(1) {
+        div.st-emotion-cache-1uzzq9q:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h2:nth-child(1){
             font-size: 24px !important;
         }
     </style>
