@@ -22,7 +22,7 @@ st.markdown(
             width: 600px !important;
         }
         section[data-testid="stSidebar"] * {
-            font-size: 1.15rem !important;  
+            font-size: 1.15rem !;  
         }
     </style>
     """,
