@@ -13,7 +13,7 @@ st.markdown(
         }
     </style>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 st.markdown(
     """
@@ -59,7 +59,7 @@ st.markdown(
     }
     </style>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
 
 df_model = pd.read_csv('model_set.csv', index_col=0)
