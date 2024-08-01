@@ -22,7 +22,7 @@ st.markdown(
             width: 600px !important;
         }
         section[data-testid="stWidgetLabel"] * {
-            font-size: 12px !important;  
+            font-size: 1rem !important;  
         }
     </style>
     """,
