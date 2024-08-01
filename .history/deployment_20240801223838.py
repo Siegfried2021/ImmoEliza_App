@@ -34,7 +34,7 @@ st.markdown(
     }
     
     /* Ensure the title remains unchanged */
-    div[data-testid="stSidebarUserContent"] h1 {
+    [data-testid="stSidebarUserContent"] h1 {
         font-size: 24px !important; /* Adjust as needed */
     }
     </style>

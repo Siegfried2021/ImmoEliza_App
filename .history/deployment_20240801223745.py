@@ -24,17 +24,17 @@ st.markdown(
     }
     
     /* Increase font size for labels and inputs in the sidebar */
-    div[data-testid="stSidebarUserContent"] .stMarkdown, 
-    div[data-testid="stSidebarUserContent"] .stSelectbox, 
-    div[data-testid="stSidebarUserContent"] .stTextInput, 
-    div[data-testid="stSidebarUserContent"] .stRadio, 
-    div[data-testid="stSidebarUserContent"] .stNumberInput, 
-    div[data-testid="stSidebarUserContent"] .stSlider {
-        font-size: 16px !important; /* Adjust the font size */
+    [data-testid="stSidebarUserContent"] .stMarkdown, 
+    [data-testid="stSidebarUserContent"] .stSelectbox, 
+    [data-testid="stSidebarUserContent"] .stTextInput, 
+    [data-testid="stSidebar"] .stRadio, 
+    [data-testid="stSidebar"] .stNumberInput, 
+    [data-testid="stSidebar"] .stSlider {
+    font-size: 16px !important; /* Adjust the font size */
     }
     
     /* Ensure the title remains unchanged */
-    div[data-testid="stSidebarUserContent"] h1 {
+    section[data-testid="stSidebar"] h1 {
         font-size: 24px !important; /* Adjust as needed */
     }
     </style>

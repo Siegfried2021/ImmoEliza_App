@@ -18,25 +18,15 @@ st.markdown(
 st.markdown(
     """
     <style>
-    /* Style the sidebar width */
-    section[data-testid="stSidebar"] {
-        width: 600px !important;
-    }
-    
-    /* Increase font size for labels and inputs in the sidebar */
-    div[data-testid="stSidebarUserContent"] .stMarkdown, 
-    div[data-testid="stSidebarUserContent"] .stSelectbox, 
-    div[data-testid="stSidebarUserContent"] .stTextInput, 
-    div[data-testid="stSidebarUserContent"] .stRadio, 
-    div[data-testid="stSidebarUserContent"] .stNumberInput, 
-    div[data-testid="stSidebarUserContent"] .stSlider {
-        font-size: 16px !important; /* Adjust the font size */
-    }
-    
-    /* Ensure the title remains unchanged */
-    div[data-testid="stSidebarUserContent"] h1 {
-        font-size: 24px !important; /* Adjust as needed */
-    }
+        section[data-testid="stSidebar"] {
+            width: 600px !important;
+        }
+        section[data-testid="stWidgetLabel"] .css-1d391kg {
+            font-size: 14px !important; 
+        }
+        section[data-testid="stSidebar"] h1 {
+            font-size: 34px !important;
+        }
     </style>
     """,
     unsafe_allow_html=True,

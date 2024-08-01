@@ -29,12 +29,12 @@ st.markdown(
     div[data-testid="stSidebarUserContent"] .stTextInput, 
     div[data-testid="stSidebarUserContent"] .stRadio, 
     div[data-testid="stSidebarUserContent"] .stNumberInput, 
-    div[data-testid="stSidebarUserContent"] .stSlider {
+    [data-testid="stSidebarUserContent"] .stSlider {
         font-size: 16px !important; /* Adjust the font size */
     }
     
     /* Ensure the title remains unchanged */
-    div[data-testid="stSidebarUserContent"] h1 {
+    [data-testid="stSidebarUserContent"] h1 {
         font-size: 24px !important; /* Adjust as needed */
     }
     </style>
