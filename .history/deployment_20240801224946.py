@@ -49,12 +49,12 @@ st.markdown(
     }
 
     /* Style sidebar sliders */
-    [data-testid="stSidebar"] .stSlider div {
+    section[data-testid="stSidebar"] .stSlider div {
         font-size: 16px !important; /* Adjust font size for sliders */
     }
 
     /* Style sidebar markdown (for error messages) */
-    [data-testid="stSidebar"] .stMarkdown {
+    section[data-testid="stSidebar"] .stMarkdown {
         font-size: 16px !important; /* Adjust font size for markdown */
     }
     </style>

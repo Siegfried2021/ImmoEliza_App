@@ -54,7 +54,7 @@ st.markdown(
     }
 
     /* Style sidebar markdown (for error messages) */
-    [data-testid="stSidebar"] .stMarkdown {
+    section[data-testid="stSidebar"] .stMarkdown {
         font-size: 16px !important; /* Adjust font size for markdown */
     }
     </style>

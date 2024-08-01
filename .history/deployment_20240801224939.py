@@ -34,27 +34,27 @@ st.markdown(
     }
 
     /* Style sidebar select boxes */
-    [data-testid="stSidebar"] .stSelectbox select {
+    section[data-testid="stSidebar"] .stSelectbox select {
         font-size: 16px !important; /* Adjust font size for select box */
     }
 
     /* Style sidebar radio buttons */
-    [data-testid="stSidebar"] .stRadio label {
+    section[data-testid="stSidebar"] .stRadio label {
         font-size: 16px !important; /* Adjust font size for radio buttons */
     }
 
     /* Style sidebar number inputs */
-    [data-testid="stSidebar"] .stNumberInput input {
+    section[data-testid="stSidebar"] .stNumberInput input {
         font-size: 16px !important; /* Adjust font size for number input */
     }
 
     /* Style sidebar sliders */
-    [data-testid="stSidebar"] .stSlider div {
+    section[data-testid="stSidebar"] .stSlider div {
         font-size: 16px !important; /* Adjust font size for sliders */
     }
 
     /* Style sidebar markdown (for error messages) */
-    [data-testid="stSidebar"] .stMarkdown {
+    section[data-testid="stSidebar"] .stMarkdown {
         font-size: 16px !important; /* Adjust font size for markdown */
     }
     </style>
