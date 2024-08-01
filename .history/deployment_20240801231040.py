@@ -21,9 +21,7 @@ st.markdown(
         section[data-testid="stSidebar"] {
             width: 600px !important;
         }
-         </style>
-    """,
-    unsafe_allow_html=True,
+
 )
 
 df_model = pd.read_csv('model_set.csv', index_col=0)

@@ -21,7 +21,13 @@ st.markdown(
         section[data-testid="stSidebar"] {
             width: 600px !important;
         }
-         </style>
+        section[data-testid="stSidebar"] * {
+            font-size: 1.15rem;  
+        }
+        div.st-emotion-cache-1uzzq9q:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h2:nth-child(1) {
+            font-size: 26px !important;
+        }
+    </style>
     """,
     unsafe_allow_html=True,
 )

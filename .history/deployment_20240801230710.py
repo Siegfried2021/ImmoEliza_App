@@ -21,7 +21,14 @@ st.markdown(
         section[data-testid="stSidebar"] {
             width: 600px !important;
         }
-         </style>
+        section[data-testid="stSidebar"] * {
+            font-size: 1.15rem;  
+        }
+        #root > div:nth-child(1) > div.withScreencast > div > div > div > section.st-emotion-cache-1gv3huu.eczjsme18 > div.st-emotion-cache-6qob1r.eczjsme11 > div.st-emotion-cache-1gwvy71.eczjsme12 > div > div > div > div > div:nth-child(1) > div > div > h2
+        div.st-emotion-cache-1uzzq9q:nth-child(1) > div:nth-child(1) > div:nth-child(1) > h2:nth-child(1) {
+            font-size: 26px !important;
+        }
+    </style>
     """,
     unsafe_allow_html=True,
 )
