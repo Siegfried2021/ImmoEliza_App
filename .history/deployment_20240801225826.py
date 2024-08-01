@@ -25,7 +25,7 @@ st.markdown(
             font-size: 1.15rem !important;  
         }
         div[data-testid="stMarkdownContainer"] {
-            font-size: 24px !important;
+            font-size: 24p
         }
     </style>
     """,

@@ -24,9 +24,7 @@ st.markdown(
         section[data-testid="stSidebar"] * {
             font-size: 1.15rem !important;  
         }
-        div[data-testid="stMarkdownContainer"] {
-            font-size: 24px !important;
-        }
+        div
     </style>
     """,
     unsafe_allow_html=True,
