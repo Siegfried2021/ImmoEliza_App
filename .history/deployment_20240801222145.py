@@ -12,7 +12,23 @@ st.markdown(
         margin: 25px auto !important;
         }
     </style>
+    """,st.markdown(
+    """
+    <style>
+        section[data-testid="stSidebar"] {
+            width: 600px !important;
+        }
+        section[data-testid="stSidebar"] .css-1d391kg {
+            font-size: 14px !important; /* Increase font size of text elements */
+        }
+        /* Ensure title font size remains unchanged */
+        section[data-testid="stSidebar"] h1 {
+            font-size: 24px !important; /* Adjust as needed to maintain title size */
+        }
+    </style>
     """,
+    unsafe_allow_html=True,
+)
     unsafe_allow_html=True,
 )
 st.markdown(
@@ -21,11 +37,8 @@ st.markdown(
         section[data-testid="stSidebar"] {
             width: 600px !important;
         }
-        section[data-testid="stSidebar"] .css-1d391kg {
-            font-size: 14px !important; 
-        }
-        section[data-testid="stSidebar"] h1 {
-            font-size: 24px !important;
+        section[data-testid="stWidgetLabel"] * {
+            font-size: 12px !important;  
         }
     </style>
     """,

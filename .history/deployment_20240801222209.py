@@ -25,7 +25,7 @@ st.markdown(
             font-size: 14px !important; 
         }
         section[data-testid="stSidebar"] h1 {
-            font-size: 24px !important;
+            font-size: 24px !important; /* Adjust as needed to maintain title size */
         }
     </style>
     """,

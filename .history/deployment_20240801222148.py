@@ -21,11 +21,8 @@ st.markdown(
         section[data-testid="stSidebar"] {
             width: 600px !important;
         }
-        section[data-testid="stSidebar"] .css-1d391kg {
-            font-size: 14px !important; 
-        }
-        section[data-testid="stSidebar"] h1 {
-            font-size: 24px !important;
+        section[data-testid="stWidgetLabel"] * {
+            font-size: 12px !important;  
         }
     </style>
     """,

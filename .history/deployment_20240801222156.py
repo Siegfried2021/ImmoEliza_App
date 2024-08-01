@@ -22,10 +22,11 @@ st.markdown(
             width: 600px !important;
         }
         section[data-testid="stSidebar"] .css-1d391kg {
-            font-size: 14px !important; 
+            font-size: 14px !important; /* Increase font size of text elements */
         }
+        /* Ensure title font size remains unchanged */
         section[data-testid="stSidebar"] h1 {
-            font-size: 24px !important;
+            font-size: 24px !important; /* Adjust as needed to maintain title size */
         }
     </style>
     """,

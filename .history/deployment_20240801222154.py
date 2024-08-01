@@ -15,22 +15,7 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-st.markdown(
-    """
-    <style>
-        section[data-testid="stSidebar"] {
-            width: 600px !important;
-        }
-        section[data-testid="stSidebar"] .css-1d391kg {
-            font-size: 14px !important; 
-        }
-        section[data-testid="stSidebar"] h1 {
-            font-size: 24px !important;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+
 
 df_model = pd.read_csv('model_set.csv', index_col=0)
 df_localize = pd.read_csv("local_set.csv", index_col=0)
