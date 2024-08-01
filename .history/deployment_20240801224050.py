@@ -27,9 +27,9 @@ st.markdown(
     div[data-testid="stSidebarUserContent"].stMarkdown, 
     div[data-testid="stSidebarUserContent"].stSelectbox, 
     div[data-testid="stSidebarUserContent"].stTextInput, 
-    div[data-testid="stSidebarUserContent"].stRadio, 
-    div[data-testid="stSidebarUserContent"].stNumberInput, 
-    div[data-testid="stSidebarUserContent"].stSlider {
+    div[data-testid="stSidebarUserContent"] .stRadio, 
+    div[data-testid="stSidebarUserContent"] .stNumberInput, 
+    div[data-testid="stSidebarUserContent"] .stSlider {
         font-size: 16px !important; /* Adjust the font size */
     }
     
