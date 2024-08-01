@@ -21,8 +21,8 @@ st.markdown(
         section[data-testid="stSidebar"] {
             width: 600px !important;
         }
-        section[data-testid="stSidebar"] * {
-            font-size: 1.15rem !important;  
+        section[data-testid="stWidgetLabel"] * {
+            font-size: 12px !important;  
         }
     </style>
     """,
@@ -56,7 +56,7 @@ def replace_nan(dict, key, new_value):
 
 def get_user_input():
     with st.sidebar:
-        st.header("Your property information")
+        st.title("Your property information")
         
         Property = {}
         

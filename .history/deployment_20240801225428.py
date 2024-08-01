@@ -13,20 +13,53 @@ st.markdown(
         }
     </style>
     """,
-    unsafe_allow_html=True,
+    unsafe_allow_html=True
 )
 st.markdown(
     """
     <style>
-        section[data-testid="stSidebar"] {
-            width: 600px !important;
-        }
-        section[data-testid="stSidebar"] * {
-            font-size: 1.15rem !important;  
-        }
+    /* Style the sidebar width */
+    sectio[data-testid="stSidebar"] {
+        width: 600px !important;
+    }
+    
+    /* Style the sidebar title */
+    section[data-testid="stSidebar"] h1 {
+        font-size: 24px !important;
+    }
+
+    /* Style sidebar text inputs */
+    section[data-testid="stSidebar"] .stTextInput input {
+        font-size: 16px !important; /* Adjust font size for text input */
+    }
+
+    /* Style sidebar select boxes */
+    section[data-testid="stSidebar"] .stSelectbox select {
+        font-size: 16px !important; /* Adjust font size for select box */
+    }
+
+    /* Style sidebar radio buttons */
+    section[data-testid="stSidebar"] .stRadio label {
+        font-size: 16px !important; /* Adjust font size for radio buttons */
+    }
+
+    /* Style sidebar number inputs */
+    section[data-testid="stSidebar"] .stNumberInput input {
+        font-size: 16px !important; /* Adjust font size for number input */
+    }
+
+    /* Style sidebar sliders */
+    section[data-testid="stSidebar"] .stSlider div {
+        font-size: 16px !important; /* Adjust font size for sliders */
+    }
+
+    /* Style sidebar markdown (for error messages) */
+    section[data-testid="stSidebar"] .stMarkdown {
+        font-size: 16px !important; /* Adjust font size for markdown */
+    }
     </style>
     """,
-    unsafe_allow_html=True,
+    unsafe_allow_html=True
 )
 
 df_model = pd.read_csv('model_set.csv', index_col=0)
@@ -56,7 +89,7 @@ def replace_nan(dict, key, new_value):
 
 def get_user_input():
     with st.sidebar:
-        st.header("Your property information")
+        st.title("Your property information")
         
         Property = {}
         

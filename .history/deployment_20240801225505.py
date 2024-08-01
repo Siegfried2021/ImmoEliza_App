@@ -21,8 +21,8 @@ st.markdown(
         section[data-testid="stSidebar"] {
             width: 600px !important;
         }
-        section[data-testid="stSidebar"] * {
-            font-size: 1.15rem !important;  
+        section[data-testid="stWidgetLabel"] * {
+            font-size: 1.rem !important;  
         }
     </style>
     """,

@@ -18,12 +18,25 @@ st.markdown(
 st.markdown(
     """
     <style>
-        section[data-testid="stSidebar"] {
-            width: 600px !important;
-        }
-        section[data-testid="stSidebar"] * {
-            font-size: 1.15rem !important;  
-        }
+    /* Style the sidebar width */
+    section[data-testid="stSidebar"] {
+        width: 600px !important;
+    }
+    
+    /* Increase font size for labels and inputs in the sidebar */
+    div[data-testid="stSidebarUserContent"].stMarkdown, 
+    div[data-testid="stSidebarUserContent"].stSelectbox, 
+    div[data-testid="stSidebarUserContent"].stTextInput, 
+    div[data-testid="stSidebarUserContent"].stRadio, 
+    div[data-testid="stSidebarUserContent"].stNumberInput, 
+    div[data-testid="stSidebarUserContent"] .stSlider {
+        font-size: 16px !important; /* Adjust the font size */
+    }
+    
+    /* Ensure the title remains unchanged */
+    div[data-testid="stSidebarUserContent"] h1 {
+        font-size: 24px !important; /* Adjust as needed */
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -56,7 +69,7 @@ def replace_nan(dict, key, new_value):
 
 def get_user_input():
     with st.sidebar:
-        st.header("Your property information")
+        st.title("Your property information")
         
         Property = {}
         
