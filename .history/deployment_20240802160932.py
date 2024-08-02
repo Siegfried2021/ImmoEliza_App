@@ -143,7 +143,7 @@ def get_user_input():
             Property_display = {"Type Of Property": TypeProperty, "Region": Region, "Province": Province, "Locality": Locality,"Living area": LivingArea, "Number of bedrooms": BedroomCount, 
                                 "Number of bathrooms": BathroomCount, "Garden": Garden, "Terrace": Terrace, "Swimming Pool": SwimmingPool, "Kitchen": KitchenType, "Year of construction": ConstructionYear, 
                                 "State of the building": StateBuilding, "PEB": PEB}
-
+        
         df_user_array = np.array(df_user)
                 
         st.markdown("""
