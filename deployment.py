@@ -26,8 +26,9 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-df_model = pd.read_csv('model_set.csv', index_col=0)
-df_localize = pd.read_csv("local_set.csv", index_col=0)
+df_houses = pd.read_csv('houses.csv')
+df_apartments = pd.read_csv('apartments.csv')
+df_localize = pd.read_csv("local_set.csv")
 df_localize = df_localize.drop_duplicates(subset="Refnis code")
 df_localize["Locality"] = df_localize["Locality"].apply(lambda x: x.title())
 
@@ -58,17 +59,16 @@ def get_user_input():
         Property = {}
         
         TypeProperty = st.selectbox("Type of property", ("House", "Apartment"))
-        Property["TypeOfProperty_numerical"] = 1 if TypeProperty == "Apartment" else 2
         
         Region = st.selectbox("Region", ("Wallonie", "Brussels", "Flanders"))
         
-        Province = st.selectbox("Province", (df_localize[df_localize["Region"] == Region]["Province"].unique()))
-        if Property["TypeOfProperty_numerical"] == 1:
+        Province = st.selectbox("Province", sorted(df_localize[df_localize["Region"] == Region]["Province"].unique()))
+        if TypeProperty == "Apartment":
             Property["Province_numerical"] = int(conversion_dict_apt[Province])
-        else:
+        if TypeProperty == "House":
             Property["Province_numerical"] = int(conversion_dict_house[Province])
         
-        Locality = st.selectbox("Locality", (df_localize[df_localize["Province"] == Province]["Locality"].unique()))
+        Locality = st.selectbox("Locality", sorted(df_localize[df_localize["Province"] == Province]["Locality"].unique()))
         Density = get_density(Locality)
         Median_revenue = get_revenue(Locality)
         Property["Density"] = int(Density)
@@ -83,17 +83,19 @@ def get_user_input():
             error_message_1 = "<p style='color: red; font-size: 16px;'>Please enter a valid number for 'Living area'</p>"
             st.markdown(error_message_1, unsafe_allow_html=True)
 
-        SurfacePlot = st.text_input("Surface of the plot (in m²)", value=0, placeholder="Enter surface of the plot in m²")
-        error_message_2 = ""
-        try:
-            SurfacePlot = int(SurfacePlot)
-            Property["SurfaceOfPlot"] = SurfacePlot
-        except ValueError:
-            error_message_2 = "<p style='color: red; font-size: 16px;'>Please enter a valid number for 'Surface of the plot'</p>"
-            st.markdown(error_message_2, unsafe_allow_html=True)
+        if TypeProperty == "House":
+            SurfacePlot = st.text_input("Surface of the plot (in m²)", value=0, placeholder="Enter surface of the plot in m²")
+            error_message_2 = ""
+            try:
+                SurfacePlot = int(SurfacePlot)
+                Property["SurfaceOfPlot"] = SurfacePlot
+            except ValueError:
+                error_message_2 = "<p style='color: red; font-size: 16px;'>Please enter a valid number for 'Surface of the plot'</p>"
+                st.markdown(error_message_2, unsafe_allow_html=True)
             
-        NumberOfFacades = st.radio("Number of facades", (2, 3, 4, "Not applicable"), key="facades")
-        Property["NumberOfFacades"] = int(NumberOfFacades) if NumberOfFacades != "Not applicable" else 0
+        if TypeProperty == "House":
+            NumberOfFacades = st.radio("Number of facades", (2, 3, 4), key="facades")
+            Property["NumberOfFacades"] = int(NumberOfFacades)
         
         BedroomCount = st.number_input("Number of bedrooms", 0, 15)
         Property["BedroomCount"] = int(BedroomCount)
@@ -123,15 +125,26 @@ def get_user_input():
         Property["PEB_numerical"] = convert_PEB[PEB]     
         
         for key in ["Kitchen_numerical", "StateOfBuilding_numerical", "PEB_numerical"]:
-            replace_nan(Property, key, df_model[key].mode()[0])   
-                    
-        df_user = pd.DataFrame([Property])
-        df_user = df_user.reindex(columns=df_model.columns)
-        df_user_array = np.array(df_user)
+            if TypeProperty == "House":
+                replace_nan(Property, key, df_houses[key].mode()[0])
+            else:
+                replace_nan(Property, key, df_apartments[key].mode()[0])
         
-        Property_display = {"Type Of Property": TypeProperty, "Region": Region, "Province": Province, "Locality": Locality, "Surface of the plot": SurfacePlot, "Number of facades": NumberOfFacades, 
+        df_user = pd.DataFrame([Property])
+                    
+        if TypeProperty == "House":
+            df_user = df_user.reindex(columns=df_houses.columns)
+            Property_display = {"Type Of Property": TypeProperty, "Region": Region, "Province": Province, "Locality": Locality, "Surface of the plot": SurfacePlot, "Number of facades": NumberOfFacades, 
                             "Living area": LivingArea, "Number of bedrooms": BedroomCount, "Number of bathrooms": BathroomCount, "Garden": Garden, "Terrace": Terrace, "Swimming Pool": SwimmingPool, 
                             "Kitchen": KitchenType, "Year of construction": ConstructionYear, "State of the building": StateBuilding, "PEB": PEB}
+            
+        if TypeProperty == "Apartment":
+            df_user = df_user.reindex(columns=df_apartments.columns)
+            Property_display = {"Type Of Property": TypeProperty, "Region": Region, "Province": Province, "Locality": Locality,"Living area": LivingArea, "Number of bedrooms": BedroomCount, 
+                                "Number of bathrooms": BathroomCount, "Garden": Garden, "Terrace": Terrace, "Swimming Pool": SwimmingPool, "Kitchen": KitchenType, "Year of construction": ConstructionYear, 
+                                "State of the building": StateBuilding, "PEB": PEB}
+        
+        df_user_array = np.array(df_user)
         
         st.markdown("""
             <style>
@@ -150,8 +163,12 @@ def get_user_input():
         
         button_submit = st.button("Submit your information")
         
-        if error_message_1 or error_message_2:
-            return None, None, None 
+        if TypeProperty == "House":
+            if error_message_1 or error_message_2:
+                return None, None, None
+        if TypeProperty == "Apartment":
+            if error_message_1:
+                return None, None, None     
             
         return df_user_array, Property_display, button_submit
         
@@ -165,14 +182,17 @@ def main():
         df_display = pd.DataFrame(list(Property_display.items()), columns=['Category', 'Your property'])
         df_display.set_index('Category', inplace=True)
         st.table(df_display)
-    
-        xgb_model = pickle.load(open('xgb_model.pkl', 'rb'))
+        
+        if len(Property_display) == 16:
+            xgb_model = pickle.load(open('xgb_model_house.pkl', 'rb'))
+        else:
+            xgb_model = pickle.load(open('xgb_model_apt.pkl', 'rb'))
+            
         prediction = xgb_model.predict(df_user_array)
-    
+            
         st.subheader('Your estimation')
         formatted_prediction = f"{int(prediction[0]):,}".replace(',', '.')
         st.markdown(f'<p style="font-size: 22px;">The estimated price of your property is <strong>{formatted_prediction} €</strong></p>', unsafe_allow_html=True)
-    
     else:
         st.write("")
         st.markdown("<p style='font-size: 22px;'>ImmoEliza is a new machine learning project aiming at revolutionizing real estate estimations.</p>", unsafe_allow_html=True)
