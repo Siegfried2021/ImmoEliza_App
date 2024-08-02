@@ -26,8 +26,8 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-df_houses = pd.read_csv('houses.csv')
-df_apartments = pd.read_csv('apartments.csv')
+df_houses = pd.read_csv("houses.csv")
+df_apartments = pd.read_csv("apartments.csv")
 df_localize = pd.read_csv("local_set.csv")
 df_localize = df_localize.drop_duplicates(subset="Refnis code")
 df_localize["Locality"] = df_localize["Locality"].apply(lambda x: x.title())
