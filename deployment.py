@@ -28,9 +28,9 @@ st.markdown(
 
 df_houses = pd.read_csv("houses.csv")
 df_apartments = pd.read_csv("apartments.csv")
-df_localize = pd.read_csv("local_set.csv")
-df_localize = df_localize.drop_duplicates(subset="Refnis code")
-df_localize["Locality"] = df_localize["Locality"].apply(lambda x: x.title())
+df_localize = pd.read_csv("local_set.csv", index_col=0)
+df_localize = df_localize.drop_duplicates(subset="Locality")
+df_localize["Locality"] = df_localize["Locality"].apply(lambda x: str(x).title())
 
 conversion_dict_house = {"Walloon Brabant": 2465, "Hainaut": 1376, "Namur": 1601, "Liège": 1682, "Luxembourg": 1616, "Brussels": 3241, 
                                  "Flemish Brabant": 2465, "West Flanders": 2055, "East Flanders": 2189, "Antwerp": 2343, "Limburg": 1865}
